@@ -8,6 +8,7 @@ class Engines extends ApiEntity
      * Return the engine items.
      *
      * @return array
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function list()
@@ -19,6 +20,7 @@ class Engines extends ApiEntity
      * Return a single engine.
      *
      * @return array
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function get($engine)

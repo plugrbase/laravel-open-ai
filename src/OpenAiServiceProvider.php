@@ -28,7 +28,7 @@ class OpenAiServiceProvider extends ServiceProvider
 
         // Register the main class to use with the facade
         $this->app->singleton('open-ai', function () {
-            return new OpenAi;
+            return new OpenAi();
         });
     }
 }

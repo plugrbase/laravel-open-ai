@@ -3,27 +3,21 @@
 namespace Plugrbase\OpenAi;
 
 use GuzzleHttp\Client as GuzzleClient;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Pool;
-use GuzzleHttp\Psr7\Response;
 
 trait Request
 {
     /**
      * Make a GET request and return the response.
      *
-     * @param string $uri
-     * @param array $data
-     * @return mixed
+     * @return bool|string|void
      */
-    public function get($uri, array $data = [])
+    public function get(string $uri, array $data = [])
     {
         return $this->request('get', $uri, [], $data);
     }
 
     /**
-     * @param string $method
-     * @param string $uri
+     * Make request to API and retrun response.
      *
      * @return object
      */
@@ -34,8 +28,7 @@ trait Request
     }
 
     /**
-     * @param string $method
-     * @param string $uri
+     * Create and return the HTTP client.
      *
      * @return object
      */
@@ -44,7 +37,7 @@ trait Request
         return new GuzzleClient([
             'base_uri' => config('openai-api.api_url'),
             'headers' => [
-                "Authorization" => "Bearer " . config('openai-api.api_key'),
+                'Authorization' => 'Bearer ' . config('openai-api.api_key'),
             ],
         ]);
     }
