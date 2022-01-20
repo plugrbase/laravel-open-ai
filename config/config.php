@@ -1,8 +1,6 @@
 <?php
 
-/*
- * You can place your custom package configuration in here.
- */
 return [
-
+    'api_key' => env('PLUGRBASE_OPENAI_API_KEY'),
+    'api_url' => env('PLUGRBASE_OPENAI_API_URL')
 ];
