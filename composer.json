@@ -1,0 +1,54 @@
+{
+    "name": "plugrbase/laravel-open-ai",
+    "description": "Open AI API for Laravel 8.x",
+    "keywords": [
+        "plugrbase",
+        "laravel-open-ai"
+    ],
+    "homepage": "https://github.com/plugrbase/laravel-open-ai",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Julien Legrand",
+            "email": "julien@nomala.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.24",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Plugrbase\\OpenAi\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Plugrbase\\OpenAi\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Plugrbase\\OpenAi\\OpenAiServiceProvider"
+            ],
+            "aliases": {
+                "OpenAi": "Plugrbase\\OpenAi\\OpenAiFacade"
+            }
+        }
+    }
+}
