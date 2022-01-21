@@ -2,7 +2,7 @@
 
 namespace Plugrbase\OpenAi\Api;
 
-class Engines extends ApiEntity
+class Engine extends ApiEntity
 {
     /**
      * Return the engine items.

@@ -3,7 +3,7 @@
 namespace Plugrbase\OpenAi;
 
 use GuzzleHttp\Client as GuzzleClient;
-use Plugrbase\OpenAi\Api\Engines;
+use Plugrbase\OpenAi\Api\Engine;
 
 class OpenAi
 {
@@ -28,12 +28,12 @@ class OpenAi
     }
 
     /**
-     * Return the engines object.
+     * Return the engine object.
      *
-     * @return \Plugrbase\OpenAi\Api\Engines
+     * @return \Plugrbase\OpenAi\Api\Engine
      */
-    public function engines()
+    public function engine()
     {
-        return new Engines($this);
+        return new Engine($this);
     }
 }

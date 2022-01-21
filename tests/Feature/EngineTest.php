@@ -4,17 +4,17 @@ namespace Plugrbase\OpenAi\Tests\Feature;
 
 use Plugrbase\OpenAi\Tests\TestCase;
 
-class EnginesTest extends TestCase
+class EngineTest extends TestCase
 {
     public function test_engines_list_should_return_engine_items()
     {
-        $engines = $this->openAi()->engines()->list();
+        $engines = $this->openAi()->engine()->list();
         $this->assertNotEmpty($engines);
     }
 
     public function test_engines_get_should_engine()
     {
-        $engine = $this->openAi()->engines()->get('davinci');
+        $engine = $this->openAi()->engine()->get('davinci');
         $this->assertNotEmpty($engine);
     }
 }
