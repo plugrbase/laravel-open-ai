@@ -6,12 +6,15 @@ class ApiEntity
 {
     /**
      * The openApi object.
-     *
-     * @var object
      */
-    public $openAi;
+    public object $openAi;
 
-    public function __construct($openAi)
+    /**
+     * Create a new object instance.
+     *
+     * @return void
+     */
+    public function __construct(object $openAi)
     {
         $this->openAi = $openAi;
     }

@@ -16,6 +16,11 @@ class OpenAi
      */
     private GuzzleClient $guzzle;
 
+    /**
+     * Create a new OpenAI instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
         if (config()->has('openai-api.api_url') && config()->has('openai-api.api_key')) {
@@ -26,8 +31,6 @@ class OpenAi
     /**
      * Create the HTTP client.
      *
-     * @param string $uri
-     * @param string $apiKey
      * @return object
      */
     public function setClient(string $uri, string $apiKey)

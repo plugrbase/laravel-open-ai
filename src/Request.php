@@ -9,7 +9,7 @@ trait Request
      *
      * @return bool|string|void
      */
-    public function get(string $uri, array $data = [])
+    public function get(string $uri, mixed $data = [])
     {
         return $this->request('get', $uri, [], $data);
     }
