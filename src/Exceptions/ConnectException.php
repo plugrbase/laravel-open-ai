@@ -4,7 +4,7 @@ namespace Plugrbase\OpenAi\Exceptions;
 
 use Exception;
 
-class AuthorizationException extends Exception
+class ConnectException extends Exception
 {
     /**
      * Create a new exception instance.
@@ -13,6 +13,6 @@ class AuthorizationException extends Exception
      */
     public function __construct()
     {
-        parent::__construct('You are not authorized to access this resource.');
+        parent::__construct('Impossible to connect.');
     }
 }

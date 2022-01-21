@@ -10,9 +10,12 @@ class OpenAi
     use Request;
 
     /**
+     * The API Key.
+     */
+    protected string $apiKey;
+
+    /**
      * The client.
-     *
-     * @var GuzzleHttp\Client
      */
     private GuzzleClient $guzzle;
 
@@ -21,10 +24,18 @@ class OpenAi
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(string $apiKey = null)
     {
-        if (config()->has('openai-api.api_url') && config()->has('openai-api.api_key')) {
-            $this->setClient(config('openai-api.api_url'), config('openai-api.api_key'));
+        if (! is_null($apiKey)) {
+            $this->apiKey = $apiKey;
+        }
+        
+        if (is_null($apiKey) && config()->has('openai-api.api_key')) {
+            $this->apiKey = config('openai-api.api_key');
+        }
+
+        if (config()->has('openai-api.api_url') && $this->apiKey != '') {
+            $this->setClient(config('openai-api.api_url'), $this->apiKey);
         }
     }
 

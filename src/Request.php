@@ -3,10 +3,15 @@
 namespace Plugrbase\OpenAi;
 
 use Exception;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ConnectException as GuzzleConnectException;
+use GuzzleHttp\Exception\GuzzleException;
 use Plugrbase\OpenAi\Exceptions\AuthorizationException;
 use Plugrbase\OpenAi\Exceptions\ConflictException;
+use Plugrbase\OpenAi\Exceptions\ConnectException;
 use Plugrbase\OpenAi\Exceptions\FailedActionException;
 use Plugrbase\OpenAi\Exceptions\NotFoundException;
+use Plugrbase\OpenAi\Exceptions\RequestException;
 use Plugrbase\OpenAi\Exceptions\ValidationException;
 use Psr\Http\Message\ResponseInterface;
 
@@ -29,15 +34,15 @@ trait Request
      */
     public function request(string $method, string $uri)
     {
-        $response = $this->guzzle->request($method, $uri);
-
-        $statusCode = $response->getStatusCode();
-
-        if ($statusCode < 200 || $statusCode > 299) {
-            return $this->handleRequestError($response);
+        try {
+            return $this->guzzle->request($method, $uri);
+        } catch (ClientException $e) {
+            return $this->handleRequestError($e->getResponse());
+        } catch (GuzzleException $e) {
+            throw new RequestException($e);
+        } catch (GuzzleConnectException $e) {
+            throw new ConnectException($e);
         }
-
-        return $response;
     }
 
     /**

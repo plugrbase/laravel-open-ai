@@ -19,8 +19,8 @@ class TestCase extends Orchestra
         $this->app['config']->set('openai-api.api_url', env('PLUGRBASE_OPENAI_API_URL'));
     }
 
-    protected function openAi()
+    protected function openAi($apiKey = null)
     {
-        return new OpenAi();
+        return new OpenAi($apiKey);
     }
 }

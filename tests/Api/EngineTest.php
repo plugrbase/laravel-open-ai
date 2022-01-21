@@ -12,7 +12,7 @@ class EngineTest extends TestCase
         $this->assertNotEmpty($engines);
     }
 
-    public function test_engines_get_should_engine()
+    public function test_engines_get_should_return_engine()
     {
         $engine = $this->openAi()->engine()->get('davinci');
         $this->assertNotEmpty($engine);
