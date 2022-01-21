@@ -2,8 +2,15 @@
 
 namespace Plugrbase\OpenAi\Api;
 
+use Plugrbase\OpenAi\Enums\EngineType;
+
 class ApiEntity
 {
+    /**
+     * The default engine.
+     */
+    public string $engine = EngineType::DAVINCI;
+
     /**
      * The openApi object.
      */
@@ -14,8 +21,12 @@ class ApiEntity
      *
      * @return void
      */
-    public function __construct(object $openAi)
+    public function __construct(object $openAi, string $engine = null)
     {
         $this->openAi = $openAi;
+
+        if ($engine != '') {
+            $this->engine = $engine;
+        }
     }
 }
