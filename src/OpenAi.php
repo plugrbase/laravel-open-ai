@@ -3,6 +3,7 @@
 namespace Plugrbase\OpenAi;
 
 use GuzzleHttp\Client as GuzzleClient;
+use Plugrbase\OpenAi\Api\Completion;
 use Plugrbase\OpenAi\Api\Engine;
 
 class OpenAi
@@ -64,5 +65,15 @@ class OpenAi
     public function engine()
     {
         return new Engine($this);
+    }
+
+    /**
+     * Return the completion object.
+     *
+     * @return \Plugrbase\OpenAi\Api\Completion
+     */
+    public function completion(string $engine = '')
+    {
+        return new Completion($this, $engine);
     }
 }

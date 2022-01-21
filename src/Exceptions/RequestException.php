@@ -11,8 +11,8 @@ class RequestException extends Exception
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($e)
     {
-        parent::__construct('Wrong request.');
+        parent::__construct($e->message);
     }
 }

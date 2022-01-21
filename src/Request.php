@@ -28,14 +28,24 @@ trait Request
     }
 
     /**
+     * Make a POST request and return the response.
+     *
+     * @return bool|string|void
+     */
+    public function post(string $uri, mixed $data = [])
+    {
+        return $this->request('post', $uri, $data);
+    }
+
+    /**
      * Make request to API and return response.
      *
      * @return object
      */
-    public function request(string $method, string $uri)
+    public function request(string $method, string $uri, array $data = [])
     {
         try {
-            return $this->guzzle->request($method, $uri);
+            return $this->guzzle->request($method, $uri, $data);
         } catch (ClientException $e) {
             return $this->handleRequestError($e->getResponse());
         } catch (GuzzleException $e) {
