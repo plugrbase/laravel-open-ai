@@ -4,6 +4,7 @@ namespace Plugrbase\OpenAi;
 
 use GuzzleHttp\Client as GuzzleClient;
 use Plugrbase\OpenAi\Api\Completion;
+use Plugrbase\OpenAi\Api\Classification;
 use Plugrbase\OpenAi\Api\Engine;
 use Plugrbase\OpenAi\Api\Search;
 
@@ -66,6 +67,16 @@ class OpenAi
     public function engine()
     {
         return new Engine($this);
+    }
+
+    /**
+     * Return the classification object.
+     *
+     * @return \Plugrbase\OpenAi\Api\Classification
+     */
+    public function classification(string $engine = '')
+    {
+        return new Classification($this, $engine);
     }
 
     /**

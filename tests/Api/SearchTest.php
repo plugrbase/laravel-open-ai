@@ -24,7 +24,7 @@ class SearchTest extends TestCase
     public function test_search_multiple_document_should_return_data()
     {
         $params = [
-            'documents' => ['puppy A is happy', 'puppy B is sad', , 'puppy C is sad'],
+            'documents' => ['puppy A is happy', 'puppy B is sad', 'puppy C is sad'],
             'query' => 'happy',
             'search_model' => 'ada',
             'max_rerank' => 5
