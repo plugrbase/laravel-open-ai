@@ -5,6 +5,7 @@ namespace Plugrbase\OpenAi;
 use GuzzleHttp\Client as GuzzleClient;
 use Plugrbase\OpenAi\Api\Completion;
 use Plugrbase\OpenAi\Api\Engine;
+use Plugrbase\OpenAi\Api\Search;
 
 class OpenAi
 {
@@ -75,5 +76,15 @@ class OpenAi
     public function completion(string $engine = '')
     {
         return new Completion($this, $engine);
+    }
+
+    /**
+     * Return the search object.
+     *
+     * @return \Plugrbase\OpenAi\Api\Search
+     */
+    public function search(string $engine = '')
+    {
+        return new Search($this, $engine);
     }
 }
