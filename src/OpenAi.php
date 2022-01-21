@@ -3,6 +3,7 @@
 namespace Plugrbase\OpenAi;
 
 use GuzzleHttp\Client as GuzzleClient;
+use Plugrbase\OpenAi\Api\Answer;
 use Plugrbase\OpenAi\Api\Completion;
 use Plugrbase\OpenAi\Api\Classification;
 use Plugrbase\OpenAi\Api\Engine;
@@ -57,6 +58,16 @@ class OpenAi
         ]);
 
         return $this;
+    }
+
+    /**
+     * Return the answer object.
+     *
+     * @return \Plugrbase\OpenAi\Api\Answer
+     */
+    public function answer()
+    {
+        return new Answer($this);
     }
 
     /**
