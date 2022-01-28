@@ -7,6 +7,7 @@ use Plugrbase\OpenAi\Api\Answer;
 use Plugrbase\OpenAi\Api\Completion;
 use Plugrbase\OpenAi\Api\Classification;
 use Plugrbase\OpenAi\Api\Engine;
+use Plugrbase\OpenAi\Api\File;
 use Plugrbase\OpenAi\Api\Search;
 
 class OpenAi
@@ -108,5 +109,15 @@ class OpenAi
     public function search(string $engine = '')
     {
         return new Search($this, $engine);
+    }
+
+    /**
+     * Return the file object.
+     *
+     * @return \Plugrbase\OpenAi\Api\File
+     */
+    public function file(string $engine = '')
+    {
+        return new File($this, $engine);
     }
 }

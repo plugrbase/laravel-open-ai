@@ -11,7 +11,7 @@ class Engine extends ApiEntity
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function list()
+    public function engines()
     {
         return json_decode($this->openAi->get('engines')->getBody()->getContents());
     }
@@ -23,7 +23,7 @@ class Engine extends ApiEntity
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function get(string $engine)
+    public function engine(string $engine)
     {
         return json_decode($this->openAi->get('engines/' . $engine)->getBody()->getContents());
     }

@@ -6,15 +6,15 @@ use Plugrbase\OpenAi\Tests\TestCase;
 
 class EngineTest extends TestCase
 {
-    public function test_engines_list_should_return_engine_items()
+    public function test_engines_should_return_engine_items()
     {
-        $engines = $this->openAi()->engine()->list();
+        $engines = $this->openAi()->engine()->engines();
         $this->assertNotEmpty($engines);
     }
 
-    public function test_engines_get_should_return_engine()
+    public function test_engines_engine_should_return_engine()
     {
-        $engine = $this->openAi()->engine()->get('davinci');
+        $engine = $this->openAi()->engine()->engine('davinci');
         $this->assertNotEmpty($engine);
     }
 }

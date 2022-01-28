@@ -32,6 +32,6 @@ class SearchTest extends TestCase
 
         $search = $this->openAi()->search(EngineType::DAVINCI)->make($params);
         $this->assertNotEmpty($search);
-        $this->assertCount(2, $search->data);
+        $this->assertCount(3, $search->data);
     }
 }
