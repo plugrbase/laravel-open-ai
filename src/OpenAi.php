@@ -8,6 +8,7 @@ use Plugrbase\OpenAi\Api\Completion;
 use Plugrbase\OpenAi\Api\Classification;
 use Plugrbase\OpenAi\Api\Engine;
 use Plugrbase\OpenAi\Api\File;
+use Plugrbase\OpenAi\Api\FineTune;
 use Plugrbase\OpenAi\Api\Search;
 
 class OpenAi
@@ -119,5 +120,15 @@ class OpenAi
     public function file(string $engine = '')
     {
         return new File($this, $engine);
+    }
+
+    /**
+     * Return the fineTUne object.
+     *
+     * @return \Plugrbase\OpenAi\Api\fineTUne
+     */
+    public function fineTUne(string $engine = '')
+    {
+        return new FineTUne($this, $engine);
     }
 }

@@ -7,6 +7,34 @@ use Rs\JsonLines\JsonLines;
 class File extends ApiEntity
 {
     /**
+     * Get a file.
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function file(string $id)
+    {
+        return json_decode(
+            $this->openAi->get('files/' . $id)
+                ->getBody()
+                ->getContents()
+        );
+    }
+
+    /**
+     * Get file content.
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function content(string $id)
+    {
+        return json_decode(
+            $this->openAi->get('files/' . $id . '/content')
+                ->getBody()
+                ->getContents()
+        );
+    }
+
+    /**
      * Get the files.
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
@@ -46,6 +74,22 @@ class File extends ApiEntity
 
         return json_decode(
             $this->openAi->post('files', $params)
+                ->getBody()
+                ->getContents()
+        );
+    }
+
+    /**
+     * Delete a file.
+     *
+     * @return array
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function delete(string $id)
+    {
+        return json_decode(
+            $this->openAi->delete('files/' . $id . '/content')
                 ->getBody()
                 ->getContents()
         );

@@ -25,4 +25,22 @@ class FileTest extends TestCase
         $this->assertEquals('uploaded', $file->status);
         $this->assertEquals('hello.json', $file->filename);
     }
+
+    public function test_files_get_should_return_file()
+    {
+        $data = (new JsonLines())->enline([
+            ['text' => 'A cat in a box'],
+            ['text' => 'Three dogs walking on the moon'],
+        ]);
+
+        $file = $this->openAi()->file()->upload('hello.json', 'search', $data);
+        
+        $this->assertEquals('uploaded', $file->status);
+        $this->assertEquals('hello.json', $file->filename);
+
+        $uploadedFile = $this->openAi()->file()->file($file->id);
+
+        $this->assertEquals('uploaded', $uploadedFile->status);
+        $this->assertEquals('hello.json', $uploadedFile->filename);
+    }
 }

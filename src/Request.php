@@ -38,6 +38,16 @@ trait Request
     }
 
     /**
+     * Make a DELETE request and return the response.
+     *
+     * @return bool|string|void
+     */
+    public function delete(string $uri, mixed $data = [])
+    {
+        return $this->request('delete', $uri, $data);
+    }
+
+    /**
      * Make request to API and return response.
      *
      * @return object
